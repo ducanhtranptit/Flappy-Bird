@@ -1,0 +1,75 @@
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'tab1')">Tab 1</button>
+  <button class="tablinks" onclick="openTab(event, 'tab2')">Tab 2</button>
+  <button class="tablinks" onclick="openTab(event, 'tab3')">Tab 3</button>
+</div>
+
+<div id="tab1" class="tabcontent">
+  <h3>Tab 1 content</h3>
+  <p>Some text here...</p>
+</div>
+
+<div id="tab2" class="tabcontent">
+  <h3>Tab 2 content</h3>
+  <p>Some text here...</p>
+</div>
+
+<div id="tab3" class="tabcontent">
+  <h3>Tab 3 content</h3>
+  <p>Some text here...</p>
+</div>
+
+
+
+
+/* Ẩn nội dung của các tab */
+.tabcontent {
+  display: none;
+}
+
+/* Thiết lập màu nền và kiểu chữ cho các nút Tab */
+.tab button {
+  background-color: #eee;
+  color: black;
+  /* Xoá đường viền nút */
+  border: none; 
+  /* Thêm đường viền xung quanh nút khi qua chuột */
+  outline: none; 
+  /* Thiết lập margin top và bottom cho nút */
+  margin: 5px;
+  /* Thiết lập padding cho nút */
+  padding: 10px;
+  /* Thiết lập kiểu chữ */
+  font-size: 20px;
+  /* Thiết lập phông chữ và chế độ in đậm chữ */
+  font-weight: bold; 
+  /* Căn giữa nút */
+  text-align: center; 
+  /* Nhấn chuột xuống và rời chuột ra đối với nút */ 
+  cursor: pointer;  
+}
+
+/* Thiết lập màu nền ban đầu cho tab được chọn */
+.tab button.active {
+  background-color: #ccc;
+}
+
+
+
+
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  // Ẩn nội dung của tất cả các tab
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  // Loại bỏ hightlight từ tất cả các nút Tab
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  // Hiển thị nội dung của tab được chọn và highlight nút tương ứng
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
